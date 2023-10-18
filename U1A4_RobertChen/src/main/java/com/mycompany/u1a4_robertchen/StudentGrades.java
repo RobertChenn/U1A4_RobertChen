@@ -9,7 +9,10 @@ package com.mycompany.u1a4_robertchen;
  * @author 335091559
  */
 public class StudentGrades extends javax.swing.JFrame {
-
+    
+    double[][] course = new double[6][5];
+    String firstN, lastN, testOne, testTwo, testThree, testFour;
+    double testO, testTw, testTh, testF;
     /**
      * Creates new form StudentGrades
      */
@@ -27,18 +30,18 @@ public class StudentGrades extends javax.swing.JFrame {
     private void initComponents() {
 
         title = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        first = new javax.swing.JLabel();
         firstName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        last = new javax.swing.JLabel();
         lastName = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        testPrompt1 = new javax.swing.JLabel();
+        testPrompt2 = new javax.swing.JLabel();
+        testPrompt3 = new javax.swing.JLabel();
+        testPrompt4 = new javax.swing.JLabel();
         test1 = new javax.swing.JTextField();
         test2 = new javax.swing.JTextField();
-        text3 = new javax.swing.JTextField();
-        text4 = new javax.swing.JTextField();
+        test3 = new javax.swing.JTextField();
+        test4 = new javax.swing.JTextField();
         add = new javax.swing.JButton();
         studentAverage = new javax.swing.JButton();
         list = new javax.swing.JButton();
@@ -46,6 +49,7 @@ public class StudentGrades extends javax.swing.JFrame {
         exit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         output = new javax.swing.JTextArea();
+        average = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,17 +57,53 @@ public class StudentGrades extends javax.swing.JFrame {
         title.setForeground(new java.awt.Color(102, 204, 255));
         title.setText("Student Grades");
 
-        jLabel2.setText("First Name:");
+        first.setText("First Name:");
 
-        jLabel3.setText("Last Name:");
+        firstName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstNameActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setText("Test 1:");
+        last.setText("Last Name:");
 
-        jLabel5.setText("Test 2:");
+        lastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastNameActionPerformed(evt);
+            }
+        });
 
-        jLabel6.setText("Test 3:");
+        testPrompt1.setText("Test 1:");
 
-        jLabel7.setText("Test 4:");
+        testPrompt2.setText("Test 2:");
+
+        testPrompt3.setText("Test 3:");
+
+        testPrompt4.setText("Test 4:");
+
+        test1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                test1ActionPerformed(evt);
+            }
+        });
+
+        test2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                test2ActionPerformed(evt);
+            }
+        });
+
+        test3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                test3ActionPerformed(evt);
+            }
+        });
+
+        test4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                test4ActionPerformed(evt);
+            }
+        });
 
         add.setText("Add");
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -73,16 +113,44 @@ public class StudentGrades extends javax.swing.JFrame {
         });
 
         studentAverage.setText("Student Average");
+        studentAverage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentAverageActionPerformed(evt);
+            }
+        });
 
         list.setText("List");
+        list.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listActionPerformed(evt);
+            }
+        });
 
         courseAverages.setText("Course Averages");
+        courseAverages.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseAveragesActionPerformed(evt);
+            }
+        });
 
         exit.setText("Exit");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
 
+        output.setEditable(false);
         output.setColumns(20);
         output.setRows(5);
         jScrollPane1.setViewportView(output);
+
+        average.setEditable(false);
+        average.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                averageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,51 +161,52 @@ public class StudentGrades extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(test1))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(test2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(text4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(69, 69, 69)
-                                    .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(115, 115, 115))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(testPrompt3)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(test3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                            .addComponent(testPrompt1)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(test1))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(testPrompt2)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(test2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(testPrompt4)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(test4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(first)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addComponent(last)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(27, 27, 27)))
-                                    .addGap(15, 15, 15)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(studentAverage)
-                                        .addComponent(courseAverages))
-                                    .addGap(1, 1, 1)))))
+                                            .addGap(69, 69, 69)
+                                            .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(115, 115, 115))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                    .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(27, 27, 27)))
+                                            .addGap(15, 15, 15)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(studentAverage)
+                                                .addComponent(courseAverages))
+                                            .addGap(1, 1, 1)))))
+                            .addComponent(average, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(title))
@@ -153,28 +222,28 @@ public class StudentGrades extends javax.swing.JFrame {
                 .addComponent(title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(first)
                     .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(last)
                     .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
+                            .addComponent(testPrompt1)
                             .addComponent(test1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
+                            .addComponent(testPrompt2)
                             .addComponent(test2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(testPrompt3)
+                            .addComponent(test3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(text4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(testPrompt4)
+                            .addComponent(test4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(102, 102, 102)
@@ -189,15 +258,79 @@ public class StudentGrades extends javax.swing.JFrame {
                                 .addComponent(courseAverages)))))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(average, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
+        firstN = firstName.getText();
+        lastN = lastName.getText();
+        testOne = test1.getText();
+        testTwo = test2.getText();
+        testThree = test3.getText();
+        testFour = test4.getText();
+        
+        try {
+            testO = Double.parseDouble(testOne);
+            testTw = Double.parseDouble(testTwo);
+            testTh = Double.parseDouble(testThree);
+            testF = Double.parseDouble(testFour);
+            
+            if (testO >= 0 && testTw >= 0 && testTh >= 0 && testF >= 0) {
+            }
+        } 
+        catch (Exception e) {
+            output.setText("Invalid input. Please make sure you have entered your full name and your test scores as positive numbers.");
+        }
     }//GEN-LAST:event_addActionPerformed
+
+    private void firstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_firstNameActionPerformed
+
+    private void lastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastNameActionPerformed
+
+    private void test1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_test1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_test1ActionPerformed
+
+    private void test2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_test2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_test2ActionPerformed
+
+    private void test3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_test3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_test3ActionPerformed
+
+    private void test4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_test4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_test4ActionPerformed
+
+    private void studentAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentAverageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentAverageActionPerformed
+
+    private void listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listActionPerformed
+
+    private void courseAveragesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseAveragesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courseAveragesActionPerformed
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitActionPerformed
+
+    private void averageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_averageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_averageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,24 +369,25 @@ public class StudentGrades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JTextField average;
     private javax.swing.JButton courseAverages;
     private javax.swing.JButton exit;
+    private javax.swing.JLabel first;
     private javax.swing.JTextField firstName;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel last;
     private javax.swing.JTextField lastName;
     private javax.swing.JButton list;
     private javax.swing.JTextArea output;
     private javax.swing.JButton studentAverage;
     private javax.swing.JTextField test1;
     private javax.swing.JTextField test2;
-    private javax.swing.JTextField text3;
-    private javax.swing.JTextField text4;
+    private javax.swing.JTextField test3;
+    private javax.swing.JTextField test4;
+    private javax.swing.JLabel testPrompt1;
+    private javax.swing.JLabel testPrompt2;
+    private javax.swing.JLabel testPrompt3;
+    private javax.swing.JLabel testPrompt4;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
