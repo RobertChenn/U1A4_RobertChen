@@ -11,8 +11,8 @@ package com.mycompany.u1a4_robertchen;
 public class StudentGrades extends javax.swing.JFrame {
     
     String[][] course = new String[30][6];
-    String firstN, lastN, testOne, testTwo, testThree, testFour;
-    double testO, testTw, testTh, testF;
+    String firstN, lastN, testOne, testTwo, testThree, testFour, firstOfStudent, lastOfStudent;
+    double testO, testTw, testTh, testF, avg;
     int people = 0;
     /**
      * Creates new form StudentGrades
@@ -239,7 +239,7 @@ public class StudentGrades extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        
+        boolean check = true;
         
         firstN = firstName.getText();
         lastN = lastName.getText();
@@ -260,28 +260,30 @@ public class StudentGrades extends javax.swing.JFrame {
                 average.setText("You can only have 30 students in a class.");
             } else {
                 if (testO >= 0 && testO <= 100 && testTw >= 0 && testTw <= 100 && testTh >= 0 && testTh <= 100 && testF >= 0 && testF <= 100) {
-                    for (int i = 0; i > course.length; i++) {
+                    for (int i = 0; i < course.length && check == true; i++) {
                         if (course[i][0] != null) {
                             if (course[i][0].equals(firstN) && course[i][1].equals(lastN)) {
                                 average.setText("This student already exsists in the course.");
+                                check = false;
                             }
-                        } else {
-                            course[people][0] = firstN;
-                            course[people][1] = lastN;
-                            course[people][2] = testOne;
-                            course[people][3] = testTwo;
-                            course[people][4] = testThree;
-                            course[people][5] = testFour;
-                            people += 1;
-                            output.append("Name: " + firstN + "\nLast Name: " + lastN + "\n");
-                            output.append("Test 1 Grade: " + Math.round(testO * 100.0) / 100.0 + "\n");
-                            output.append("Test 2 Grade: " + Math.round(testTw * 100.0) / 100.0 + "\n");
-                            output.append("Test 3 Grade: " + Math.round(testTh * 100.0) / 100.0 + "\n");
-                            output.append("Test 4 Grade: " + Math.round(testF * 100.0) / 100.0 + "\n\n");
-                        }
+                        } 
+                    }
+                    if (check == true) {
+                        people ++;
+                        course[people][0] = firstN;
+                        course[people][1] = lastN;
+                        course[people][2] = testOne;
+                        course[people][3] = testTwo;
+                        course[people][4] = testThree;
+                        course[people][5] = testFour;
+                        output.append("First Name: " + firstN + "\nLast Name: " + lastN + "\n");
+                        output.append("Test 1 Grade: " + Math.round(testO * 100.0) / 100.0 + "\n");
+                        output.append("Test 2 Grade: " + Math.round(testTw * 100.0) / 100.0 + "\n");
+                        output.append("Test 3 Grade: " + Math.round(testTh * 100.0) / 100.0 + "\n");
+                        output.append("Test 4 Grade: " + Math.round(testF * 100.0) / 100.0 + "\n\n");
                     }
                 } else {
-                    average.setText("eInvalid input. Please make sure you have entered your full name and your test scores as positive numbers.");
+                    average.setText("Invalid input. Please make sure you have entered your full name and your test scores as positive numbers.");
                 }
             }
         } 
@@ -315,7 +317,22 @@ public class StudentGrades extends javax.swing.JFrame {
     }//GEN-LAST:event_test4ActionPerformed
 
     private void studentAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentAverageActionPerformed
-        // TODO add your handling code here:
+        firstOfStudent = first.getText();
+        lastOfStudent = last.getText();
+        
+        for (int i = 0; i < course.length; i++) {
+            course[i][0] = firstOfStudent;
+            course[i][1] = lastOfStudent;
+            if (course[i][0].equals(firstOfStudent) && course[i][1].equals(lastOfStudent)) {
+                course[i][2] = testOne;
+                course[i][3] = testTwo;
+                course[i][4] = testThree;
+                course[i][5] = testFour;
+                avg = (Double.parseDouble(course[i][2]) + Double.parseDouble(course[i][3]) + Double.parseDouble(course[i][4]) + Double.parseDouble(course[i][5])) / 4;
+                average.setText(Double.toString(Math.round(avg * 100.0) / 100.0));
+                break;
+            }
+        } 
     }//GEN-LAST:event_studentAverageActionPerformed
 
     private void courseAveragesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseAveragesActionPerformed
