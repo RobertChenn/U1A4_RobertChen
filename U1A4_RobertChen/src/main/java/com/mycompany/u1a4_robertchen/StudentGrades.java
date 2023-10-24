@@ -276,7 +276,7 @@ public class StudentGrades extends javax.swing.JFrame {
                         course[people][5] = testFour;
                         people ++;
                         
-                        output.append("First Name: " + course[people-1][0] + "\nLast Name: " + course[people-1][1] + "\n");
+                        output.append("First Name: " + firstN + "\nLast Name: " + lastN + "\n");
                         output.append("Test 1 Grade: " + Math.round(testO * 100.0) / 100.0 + "\n");
                         output.append("Test 2 Grade: " + Math.round(testTw * 100.0) / 100.0 + "\n");
                         output.append("Test 3 Grade: " + Math.round(testTh * 100.0) / 100.0 + "\n");
@@ -317,31 +317,28 @@ public class StudentGrades extends javax.swing.JFrame {
     }//GEN-LAST:event_test4ActionPerformed
 
     private void studentAverageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentAverageActionPerformed
-          
-//        if (firstOfStudent.isEmpty() || lastOfStudent.isEmpty()) {
-//                average.setText("Invalid input. You cannot have an empty field.");
-//        }
-        
-        for (int i = 0; i < people; i++) {
-//            if (course[i][0] != null) {
-//                if (course[i][0].equals(firstN) && course[i][1].equals(lastN)) {
-//                    average.setText("This student already exsists in the course.");
-//                }
-//            } 
-            if (course[i][0].equals(firstName.getText()) && course[i][1].equals(lastName.getText())) {
-//                course[i][2] = testOne;
-//                course[i][3] = testTwo;
-//                course[i][4] = testThree;
-//                course[i][5] = testFour;
-                avg = (Double.parseDouble(course[i][2]) + Double.parseDouble(course[i][3]) + Double.parseDouble(course[i][4]) + Double.parseDouble(course[i][5])) / 4;
-                outputField.setText(Double.toString(Math.round(avg * 100.0) / 100.0));
-                break;
+        if (firstN.isEmpty() || lastN.isEmpty()) {
+                outputField.setText("Invalid input. You cannot have an empty field.");
+        } else {
+            for (int i = 0; i < people; i++) {
+                if (course[i][0].equals(firstName.getText()) && course[i][1].equals(lastName.getText())) {
+                    avg = (Double.parseDouble(course[i][2]) + Double.parseDouble(course[i][3]) + Double.parseDouble(course[i][4]) + Double.parseDouble(course[i][5])) / 4;
+                    outputField.setText("The student's average is: " + Double.toString(Math.round(avg * 100.0) / 100.0) + "%");
+                    break;
+                } else {
+                    outputField.setText("This student is not in the class");
+                }
             }
-        } 
+        }
     }//GEN-LAST:event_studentAverageActionPerformed
 
     private void courseAveragesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseAveragesActionPerformed
-        // TODO add your handling code here:
+        double courseTotal = 0;
+        
+        for (int i = 0; i < people; i++) {
+            courseTotal += (Double.parseDouble(course[i][2]) + Double.parseDouble(course[i][3]) + Double.parseDouble(course[i][4]) + Double.parseDouble(course[i][5])) / 4;
+        }
+        outputField.setText("The class average is: " + Double.toString(Math.round((courseTotal / people) * 100.0) / 100.0) + "%");
     }//GEN-LAST:event_courseAveragesActionPerformed
 
     private void outputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputFieldActionPerformed
