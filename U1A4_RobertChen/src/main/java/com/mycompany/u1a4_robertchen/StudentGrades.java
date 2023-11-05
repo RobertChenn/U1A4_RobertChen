@@ -282,6 +282,8 @@ public class StudentGrades extends javax.swing.JFrame {
                         output.append("Test 3 Grade: " + Math.round(testTh * 100.0) / 100.0 + "\n");
                         output.append("Test 4 Grade: " + Math.round(testF * 100.0) / 100.0 + "\n\n");
                     }
+                } else if (testO > 100 || testTw > 100 || testTh > 100 || testF > 100) {
+                    outputField.setText("Invalid input. Please make sure the student's test scores are less than 100.");
                 } else {
                     outputField.setText("Invalid input. Please make sure you have entered your full name and your test scores as positive numbers.");
                 }
